@@ -1,4 +1,4 @@
-# Event delegation, event propagation, event bubbling. Throttle, debounce, lazyload.
+# Event delegation
 
 ## Завдання 1 - галерея зображень
 
