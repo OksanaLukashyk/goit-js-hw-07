@@ -22,14 +22,22 @@ function showFullSize(evt) {
     return;
   }
 
-  const instance = basicLightbox.create(`
-    <img src="${evt.target.dataset.source}" width="1280" height="auto" />
-`);
+  const instance = basicLightbox.create(
+    `
+    <img src="${evt.target.dataset.source}" width="1280" height="auto" />`,
+    {
+      onShow: (instance) => {
+        window.addEventListener("keydown", clickEsc);
+      },
+      onClose: (instance) => {
+        window.removeEventListener("keydown", clickEsc);
+      },
+    }
+  );
+
   instance.show();
 
   // basicLightbox.create(`<img src="${evt.target.dataset.source}" width="1280" height="auto" />`).show();
-
-  window.addEventListener("keydown", clickEsc);
 
   function clickEsc(evt) {
     if (evt.code !== "Escape") {
